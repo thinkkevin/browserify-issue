@@ -1,0 +1,23 @@
+{
+  "name": "browserify-issue",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "rm -rf tmp && mkdir tmp",
+    "good": "./node_modules/.bin/browserify -e index.js > ./tmp/good.js",
+    "bad": "./node_modules/.bin/browserify -e wrapper.js > ./tmp/bad.js",
+    "postinstall": "npm run good && npm run bad"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "browser-request": "0.3.3",
+    "browserify": "13.1.0",
+    "my-module": "file:modules/my-module",
+    "request": "2.74.0"
+  },
+  "browser":{
+    "request":"browser-request"
+  }
+}
